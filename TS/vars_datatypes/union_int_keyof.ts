@@ -33,3 +33,20 @@ welcomePatron("Anshul");
 welcomePatron(["Keona", "Kapil"]);
 
 
+// intersection
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+
+type Point3 = Point & { z: number; };
+
+type PointKeys = keyOf Point3;
+
+let k: PointKeys = "x";
+let p: PointKeys = "y";
+let m: PointKeys = "z";
+
+console.log(k + " this was okay");
