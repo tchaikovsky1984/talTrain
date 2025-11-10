@@ -41,6 +41,7 @@ type Point = {
 };
 
 
+// intersection typing
 type Point3 = Point & { z: number; };
 
 type PointKeys = keyOf Point3;

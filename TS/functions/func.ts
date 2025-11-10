@@ -23,3 +23,14 @@ const pet = function(s: string): () => string {
 const viv = pet("Vivie");
 console.log(viv());
 
+// constructor signatures
+
+type StringCon = {
+  new(value?: any): string;
+};
+
+interface StringFac {
+  new(value?: any): string;
+}
+
+
