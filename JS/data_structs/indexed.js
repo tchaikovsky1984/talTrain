@@ -93,6 +93,10 @@ console.log(rem);
 console.log(arr);
 
 arr.splice(2, 1, "an", "am")
+console.log("here");
+console.log(arr);
+
+arr.splice(2, 0, ["a", "b"]);
 console.log(arr);
 
 // slice
