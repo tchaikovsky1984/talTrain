@@ -53,6 +53,11 @@ export const main = async () => {
     res.status(200).json({ "running": "true", "now()": answer });
   });
 
+  app.get("/main/users/", async (req, res) => {
+    const answer = await client.query("SELECT * FROM User");
+    res.status(200).json({ "answer": answer });
+  });
+
   app.use(routeNotFound);
 
   HTTPServer = http.createServer(app);

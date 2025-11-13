@@ -2,6 +2,8 @@ import { Client } from 'pg';
 
 import type { DatabaseConfig } from "../config/types.ts";
 
+let persistentClient: Client;
+
 export async function connectDB(info: DatabaseConfig): Promise<Client | null> {
   try {
     const client = new Client({
@@ -13,6 +15,8 @@ export async function connectDB(info: DatabaseConfig): Promise<Client | null> {
     });
 
     await client.connect();
+
+    persistentClient = client;
 
     return client;
   }
@@ -30,4 +34,8 @@ export function handleDatabaseError(err: Error): void {
   console.log("err: " + err.name);
   console.log(err.message);
   console.log('===================================');
+}
+
+export function getDBClient(): Client | Error {
+  return persistentClient ? persistentClient : new Error("Client does not exist yet. DB Connection not made.");
 }

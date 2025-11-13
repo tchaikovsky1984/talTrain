@@ -5,3 +5,11 @@ export type DatabaseConfig = {
   DB_USR: string;
   DB_PWD: string;
 };
+
+export type RegisterRequestBody{
+  username: string;
+  email: string;
+  name: string;
+  role: string;
+  password: string,
+}
