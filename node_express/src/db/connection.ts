@@ -1,4 +1,5 @@
 import { Client } from 'pg';
+import { GraphQLClient } from 'graphql-request';
 
 import type { DatabaseConfig } from "../config/types.ts";
 
@@ -39,3 +40,8 @@ export function handleDatabaseError(err: Error): void {
 export function getDBClient(): Client | Error {
   return persistentClient ? persistentClient : new Error("Client does not exist yet. DB Connection not made.");
 }
+
+export const persistentGraphQLClient: GraphQLClient = new GraphQLClient("http://localhost:8080/v1/graphql",
+  {
+    headers: { "x-hasura-admin-secret": "myadminsecretkey" },
+  });

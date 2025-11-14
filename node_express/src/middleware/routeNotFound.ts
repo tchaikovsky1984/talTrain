@@ -10,6 +10,6 @@ export function routeNotFound(req: Request, res: Response, next: NextFunction) {
 
   res.status(400).json({ "error": error.message });
 
-  next();
+  return
 
 }
