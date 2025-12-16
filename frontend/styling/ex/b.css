@@ -1,0 +1,28 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#card {
+  padding: 3%;
+  margin: 6%;
+  border: 3px solid;
+  border-color: #f1f1d1;
+  border-radius: 30px;
+  min-width: 80%;
+}
+
+#card p{
+  font-size: 20px;
+}
+
+@media(max-width: 600px){
+  #card p{
+    font-size: 15px;
+  }
+  #card {
+    background-color: #f1f1b0;
+    font-family: Helvetica;
+    margin: 1%;
+  }
+}

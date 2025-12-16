@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box; 
+}
+
+.square{
+  background-color: #d1d1a1;
+  border: 1px solid #232323;
+  border-radius: 10px;
+  margin: 0px;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square h1{
+  background-color: #d1d1a1;
+  color: #232323;
+  border: 0px;
+}

@@ -1,0 +1,42 @@
+
+.msg-container-X {
+  height: 60px;
+  width: 300px;
+  background-color: #aaccdf;
+  border: 1px solid #88aabd;
+  border-radius: 20px;
+  flex-shrink: 1;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.msg-container-O {
+  height: 60px;
+  width: 300px;
+  background-color: #dfaacc;
+  border: 1px solid #bd88aa;
+  border-radius: 20px;
+  flex-shrink: 1;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+.msg-container-winner {
+  height: 60px;
+  width: 300px;
+  background-color: #afdfaf;
+  border: 1px solid #8dbd8d;
+  border-radius: 20px;
+  flex-shrink: 1;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  font-weight: bold;
+}

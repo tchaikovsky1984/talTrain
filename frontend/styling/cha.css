@@ -1,0 +1,11 @@
+section table {
+  position: relative;
+  top: -60px;
+  left: 200px;
+}
+
+footer {
+  position: fixed;
+  top: 0px;
+  left: 450px;
+}
