@@ -2,8 +2,20 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eeeeee;
+}
+
+h1 {
+  font-family: Helvetica;
+}
+
 .app-container {
   background-color: #fbfbda;
+  border: 2px solid;
+  border-color: #d9d9b8;
   border-radius: 40px;
   padding: 20px;
   display: flex;
