@@ -14,54 +14,68 @@ interface BoardProps {
 function Board(props: BoardProps) {
 
   const onSquareClick = (row: number, col: number) => {
+    // 1. Guard Clause
     if (props.boardState[row][col] !== "" || props.gameState !== "prog") {
-      console.log(props.gameState);
       return;
     }
-    else {
-      props.boardState[row][col] = props.currentPlayer;
-      const newState = props.boardState.map((r) => [...r]);
-      props.updateBoardState(newState);
-      props.currentPlayer === "X" ? props.setCurrentPlayer("O") : props.setCurrentPlayer("X");
-    }
 
-    let i;
-    for (i = 0; i < 3; i++) {
-      if (props.boardState[i][0] === props.boardState[i][1] &&
-        props.boardState[i][0] === props.boardState[i][2] &&
-        props.boardState[i][0] !== "") {
-        props.updateGameState(props.boardState[i][0]);
-        console.log(props.gameState);
+    // 2. Create New Board (Local Variable)
+    const newState = props.boardState.map((r) => [...r]);
+    newState[row][col] = props.currentPlayer; // Update the COPY
+
+    // 3. Update React (Visuals)
+    props.updateBoardState(newState);
+    props.setCurrentPlayer(props.currentPlayer === "X" ? "O" : "X");
+
+    // --- LOGIC SECTION ---
+
+    // We use a LOCAL variable to track the winner immediately
+    let detectedWinner = null;
+
+    // 4. Check Rows (Using newState, NOT props.boardState)
+    for (let i = 0; i < 3; i++) {
+      if (newState[i][0] !== "" &&
+        newState[i][0] === newState[i][1] &&
+        newState[i][0] === newState[i][2]) {
+        detectedWinner = newState[i][0];
       }
     }
-    for (i = 0; i < 3; i++) {
-      if (props.boardState[0][i] === props.boardState[1][i] &&
-        props.boardState[0][i] === props.boardState[2][i] &&
-        props.boardState[0][i] !== "") {
-        props.updateGameState(props.boardState[0][i]);
-        console.log(props.gameState);
+
+    // 5. Check Cols (Using newState)
+    for (let i = 0; i < 3; i++) {
+      if (newState[0][i] !== "" &&
+        newState[0][i] === newState[1][i] &&
+        newState[0][i] === newState[2][i]) {
+        detectedWinner = newState[0][i];
       }
     }
 
-    if (props.boardState[0][0] === props.boardState[1][1] &&
-      props.boardState[1][1] === props.boardState[2][2] &&
-      props.boardState[0][0] !== ""
-    ) {
-      props.updateGameState(props.boardState[0][0]);
-      console.log(props.gameState);
+    // 6. Check Diagonals (Using newState)
+    if (newState[0][0] !== "" &&
+      newState[0][0] === newState[1][1] &&
+      newState[1][1] === newState[2][2]) {
+      detectedWinner = newState[0][0];
+    }
+    if (newState[2][0] !== "" &&
+      newState[2][0] === newState[1][1] &&
+      newState[1][1] === newState[0][2]) {
+      detectedWinner = newState[2][0];
     }
 
-    if (props.boardState[2][0] === props.boardState[1][1] &&
-      props.boardState[1][1] === props.boardState[0][2] &&
-      props.boardState[2][0] !== ""
-    ) {
-      props.updateGameState(props.boardState[2][0]);
-      console.log(props.gameState);
-    }
-    console.log("game state:" + props.gameState);
-    console.log("current player:" + props.currentPlayer);
+    // 7. Final Decision Tree
+    if (detectedWinner) {
+      // We found a winner!
+      props.updateGameState(detectedWinner);
+    } else {
+      // No winner yet? THEN check for draw.
+      // We check if every cell in newState is filled
+      const isDraw = newState.flat().every((cell) => cell !== "");
 
-  }
+      if (isDraw) {
+        props.updateGameState("draw");
+      }
+    }
+  };
 
   return (
     <div id="container">

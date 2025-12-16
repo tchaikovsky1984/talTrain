@@ -40,3 +40,17 @@
   font-family: Helvetica;
   font-weight: bold;
 }
+
+.msg-container-draw {
+  height: 60px;
+  width: 300px;
+  background-color: #afafaf;
+  border: 1px solid #8d8d8d;
+  border-radius: 20px;
+  flex-shrink: 1;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica;
+  font-weight: bold;
+}
