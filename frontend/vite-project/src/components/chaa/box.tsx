@@ -15,9 +15,11 @@ function Box(props: boxProps) {
 
   const handleMouse = (event: React.MouseEvent) => {
     event.preventDefault();
-    props.setX((x: number) => x + event.movementX);
-    props.setY((y: number) => y + event.movementY);
-    setRGB([Math.round((props.x + event.movementX) * 255 / 600), 0, Math.round((props.y + event.movementY) * 255 / 600)]);
+    const X = event.nativeEvent.offsetX;
+    const Y = event.nativeEvent.offsetY;
+    props.setX(X);
+    props.setY(Y);
+    setRGB([Math.round(X * 255 / 600), 0, Math.round(Y * 255 / 600)]);
   };
 
   return (
