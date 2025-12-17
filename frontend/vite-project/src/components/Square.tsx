@@ -1,5 +1,3 @@
-//import { useState } from "react";
-
 import "./Square.css";
 
 interface SquareProps {

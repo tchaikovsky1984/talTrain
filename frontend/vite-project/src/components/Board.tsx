@@ -78,7 +78,7 @@ function Board(props: BoardProps) {
   };
 
   return (
-    <div id="container">
+    <div className="grid w-fit border border-solid border-[#232323] rounded-[10px] p-7.5 grid-cols-[100px_100px_100px] gap-2.5 items-center justify-center">
       <Square id="0" mark={props.boardState[0][0]} onSquareClick={onSquareClick} />
       <Square id="1" mark={props.boardState[0][1]} onSquareClick={onSquareClick} />
       <Square id="2" mark={props.boardState[0][2]} onSquareClick={onSquareClick} />

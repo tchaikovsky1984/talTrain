@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "react-router-dom";
 
-import Parent from "./components/chaa/Parent.tsx";
-import NewParent from "./components/cha2/Parent.tsx";
 import Board from "./components/Board";
+import TimerParent from "./components/cha2/Parent.tsx";
+import Greet from "./components/Greet.tsx";
+import ColourParent from "./components/chaa/Parent.tsx";
 import GameMessage from "./components/GameMessage";
 import RestartButton from "./components/RestartButton.tsx";
-import "./App.css";
+import Challenge from "./components/Challenge.tsx";
 
 import "./App.css";
 
@@ -21,16 +22,16 @@ function App() {
         <nav >
           <Link to="/"><p>Home</p></Link>
           <Link to="/tic"><p>Tic Tac Toe</p></Link>
-          <Link to="/color"><p>Colour</p></Link>
-          <Link to="/timer"><p>Timer</p></Link>
+          <Link to="/challenge"><p>Challenges</p></Link>
+          <Link to="/greeting"><p>Greet</p></Link>
         </nav>
 
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<h1>Home Page buddy</h1>} />
           <Route path="/tic" element={
-            <div className="full-container" >
-              <h1>TicTacToe :3</h1>
-              <div className="app-container">
+            <div className="flex justify-between content-center flex-col" >
+              <h1 className="text-5xl text-[#101a2f] font-extrabold font-[Helvetica]">TicTacToe :3</h1>
+              <div className="bg-[#fbfbda] border-2 border-solid border-[#d9d9ba] rounded-[40px] p-5 flex justify-evenly items-center">
                 <Board boardState={boardState} updateBoardState={updateBoardState}
                   gameState={gameState} updateGameState={updateGameState}
                   currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} />
@@ -38,8 +39,13 @@ function App() {
               </div>
               <RestartButton setGameState={updateGameState} setBoardState={updateBoardState} gameState={gameState} />
             </div>} />
-          <Route path="/color" element={<Parent />} />
-          <Route path="/timer" element={<NewParent />} />
+          <Route path="/challenge" element={<Challenge />}>
+            <Route path="color" element={<ColourParent />} />
+            <Route path="timer" element={<TimerParent />} />
+          </Route>
+          <Route path="/greeting" element={<Outlet />}>
+            <Route path=":name" element={<Greet />} />
+          </Route>
         </Routes>
       </Router>
     </>

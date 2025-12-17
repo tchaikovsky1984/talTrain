@@ -20,7 +20,7 @@ function GameMessage(props: GameMessageProps) {
 
   return (
     <>
-      <div className={props.gameState !== "prog" ? (props.gameState === "draw" ? "msg-container-draw" : "msg-container-winner") : ("msg-container-" + props.currentPlayer)}>
+      <div className={props.gameState !== "prog" ? (props.gameState === "draw" ? "h-15 w-75 bg-[#afafaf] border-2 border-[#8d8d8d] shrink flex justify-center items-center font-[Helvetica] font-bold rounded-[20px]" : "h-15 w-75 bg-[#afdfaf] border-2 border-[#8dbd8d] shrink flex justify-center items-center font-[Helvetica] font-bold rounded-[20px]") : (props.currentPlayer === "X" ? "h-15 w-75 bg-[#aaccdf] border-2 border-[#88aabd] shrink flex justify-center items-center font-[Helvetica] font-bold rounded-[20px]" : "h-15 w-75 bg-[#dfaacc] border-2 border-[#bd88aa] shrink flex justify-center items-center font-[Helvetica] font-bold rounded-[20px]")}>
         <h3>{message}</h3>
       </div >
     </>
