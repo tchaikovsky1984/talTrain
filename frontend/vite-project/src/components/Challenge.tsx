@@ -5,7 +5,7 @@ function Challenge() {
     <>
       <ul>
         <li>
-          <Link to="/challenge/colour" ><p>Colour</p></Link>
+          <Link to="/challenge/color" ><p>Colour</p></Link>
         </li>
         <li>
           <Link to="/challenge/timer" ><p>Timer</p></Link>
